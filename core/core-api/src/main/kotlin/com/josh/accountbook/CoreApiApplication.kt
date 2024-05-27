@@ -1,11 +1,13 @@
 package com.josh.accountbook
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.boot.context.properties.ConfigurationPropertiesScan
 import org.springframework.boot.runApplication
 
+@ConfigurationPropertiesScan
 @SpringBootApplication
-class AccountbookApplication
+class CoreApiApplication
 
 fun main(args: Array<String>) {
-	runApplication<AccountbookApplication>(*args)
+    runApplication<CoreApiApplication>(*args)
 }
