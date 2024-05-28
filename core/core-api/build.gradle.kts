@@ -8,7 +8,7 @@ tasks.getByName("jar") {
 
 dependencies {
     implementation(project(":core:core-domain"))
-//    implementation(project(":security:security-core"))
+    implementation(project(":security:security-core"))
     implementation("org.springframework.boot:spring-boot-starter-security")
     implementation(project(":support:monitoring"))
     implementation(project(":support:logging"))
