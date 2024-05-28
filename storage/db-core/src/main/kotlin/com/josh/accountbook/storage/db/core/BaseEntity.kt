@@ -3,19 +3,19 @@ package com.josh.accountbook.storage.db.core
 import jakarta.persistence.Column
 import jakarta.persistence.EntityListeners
 import jakarta.persistence.MappedSuperclass
-import org.hibernate.annotations.CreationTimestamp
-import org.hibernate.annotations.UpdateTimestamp
+import org.springframework.data.annotation.CreatedBy
+import org.springframework.data.annotation.LastModifiedBy
 import org.springframework.data.jpa.domain.support.AuditingEntityListener
 import java.time.LocalDateTime
 
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener::class)
-abstract class BaseEntity {
-    @CreationTimestamp
+abstract class BaseEntity: BaseTimeEntity() {
+
+    @CreatedBy
     @Column(updatable = false)
-    val createdDate: LocalDateTime?=null
-    @UpdateTimestamp
-    @Column
-    var modifiedDate: LocalDateTime?=null
-        protected set
+    val createdBy: LocalDateTime? = null
+
+    @LastModifiedBy
+    var lastModifiedBy: String? = null
 }
