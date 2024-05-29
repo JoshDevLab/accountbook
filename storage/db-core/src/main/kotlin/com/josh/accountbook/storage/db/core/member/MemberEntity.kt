@@ -1,5 +1,6 @@
 package com.josh.accountbook.storage.db.core.member
 
+import com.josh.accountbook.core.domain.auth.Member
 import com.josh.accountbook.core.domain.auth.RoleType
 import jakarta.persistence.*
 
@@ -17,5 +18,8 @@ class MemberEntity(
     @Enumerated
     val roleType: RoleType
 ) {
+    fun toDomain(): Member {
+        return Member(id, email, name, password, roleType)
+    }
 
 }
