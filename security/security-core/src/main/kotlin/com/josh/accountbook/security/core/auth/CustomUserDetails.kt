@@ -1,4 +1,4 @@
-package com.josh.accountbook.security.core
+package com.josh.accountbook.security.core.auth
 
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.authority.SimpleGrantedAuthority

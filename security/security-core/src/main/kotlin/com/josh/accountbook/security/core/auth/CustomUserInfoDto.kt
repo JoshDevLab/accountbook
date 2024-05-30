@@ -1,4 +1,4 @@
-package com.josh.accountbook.security.core
+package com.josh.accountbook.security.core.auth
 
 import com.josh.accountbook.core.domain.auth.RoleType
 

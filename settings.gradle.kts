@@ -7,8 +7,8 @@ include(
     "tests:api-docs",
     "support:logging",
     "support:monitoring",
-    "clients:client",
-    "clients:aws-client",
+//    "clients:client",
+//    "clients:aws-client",
     "security:security-core",
 )
 
