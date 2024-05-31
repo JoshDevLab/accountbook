@@ -1,4 +1,4 @@
-package com.josh.accountbook.core.api.controller
+package com.josh.accountbook.core.api.controller.v1
 
 import com.josh.accountbook.core.api.dto.SignUpRequest
 import com.josh.accountbook.core.api.support.response.ApiResponse
