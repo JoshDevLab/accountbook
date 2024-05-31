@@ -1,6 +1,6 @@
 package com.josh.accountbook.security.core.auth
 
-import com.josh.accountbook.core.domain.auth.RoleType
+import com.josh.accountbook.core.domain.member.RoleType
 
 data class CustomUserInfoDto(
     val id: Long,

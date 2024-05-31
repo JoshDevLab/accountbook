@@ -1,10 +1,12 @@
 package com.josh.accountbook.security.core.auth
 
-import com.josh.accountbook.core.domain.auth.MemberRepository
+import com.josh.accountbook.core.domain.member.MemberRepository
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.security.core.userdetails.UsernameNotFoundException
+import org.springframework.stereotype.Component
 
+@Component
 class CustomUserDetailService(
     private val memberRepository: MemberRepository
 ): UserDetailsService {

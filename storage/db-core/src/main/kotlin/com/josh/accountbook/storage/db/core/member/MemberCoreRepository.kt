@@ -1,7 +1,8 @@
 package com.josh.accountbook.storage.db.core.member
 
-import com.josh.accountbook.core.domain.auth.Member
-import com.josh.accountbook.core.domain.auth.MemberRepository
+import com.josh.accountbook.core.domain.member.Member
+import com.josh.accountbook.core.domain.member.MemberRepository
+import com.josh.accountbook.core.domain.member.SignUpServiceRequest
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Repository
 
@@ -23,6 +24,15 @@ class MemberCoreRepository(
                 return it.toDomain()
             }
             ?: return null
+    }
+
+    override fun save(signUpRequest: SignUpServiceRequest): String {
+        val registerNewMember = MemberEntity.registerNewMember(signUpRequest)
+        return memberJpaRepository.save(registerNewMember).name
+    }
+
+    override fun existsByEmail(email: String): Boolean {
+        return memberJpaRepository.existsByEmail(email)
     }
 
 }

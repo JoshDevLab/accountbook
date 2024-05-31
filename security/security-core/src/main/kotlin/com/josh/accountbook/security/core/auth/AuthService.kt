@@ -1,6 +1,6 @@
 package com.josh.accountbook.security.core.auth
 
-import com.josh.accountbook.core.domain.auth.MemberRepository
+import com.josh.accountbook.core.domain.member.MemberRepository
 import org.springframework.security.authentication.BadCredentialsException
 import org.springframework.security.core.userdetails.UsernameNotFoundException
 import org.springframework.security.crypto.password.PasswordEncoder

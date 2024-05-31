@@ -1,7 +1,8 @@
 package com.josh.accountbook.storage.db.core.member
 
-import com.josh.accountbook.core.domain.auth.Member
-import com.josh.accountbook.core.domain.auth.RoleType
+import com.josh.accountbook.core.domain.member.Member
+import com.josh.accountbook.core.domain.member.RoleType
+import com.josh.accountbook.core.domain.member.SignUpServiceRequest
 import jakarta.persistence.*
 
 @Entity
@@ -20,6 +21,12 @@ class MemberEntity(
 ) {
     fun toDomain(): Member {
         return Member(id, email, name, password, roleType)
+    }
+
+    companion object {
+        fun registerNewMember(signUpRequest: SignUpServiceRequest):MemberEntity {
+            return MemberEntity(null, signUpRequest.email, signUpRequest.name, signUpRequest.password, RoleType.USER)
+        }
     }
 
 }

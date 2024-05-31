@@ -1,4 +1,4 @@
-package com.josh.accountbook.core.domain.auth
+package com.josh.accountbook.core.domain.member
 
 data class Member(
     val id: Long? = null,
