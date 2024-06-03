@@ -8,7 +8,6 @@ class CustomerService(
     val customerHelper: CustomerHelper,
     val accountHelper: AccountHelper
 ) {
-    @Transactional
     fun register(name: String, memberId: Long): String {
 //        if (accountHelper.existByAccountNumberMemberId(customerRequest.accountNumber, memberId)) {
 //            throw IllegalArgumentException("이미 존재하는 계좌입니다.")
