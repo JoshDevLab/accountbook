@@ -1,5 +1,7 @@
 package com.josh.accountbook.storage.db.core.customer
 
+import com.josh.accountbook.core.domain.customer.Account
+import com.josh.accountbook.core.domain.customer.AccountServiceRequest
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
@@ -14,4 +16,13 @@ class AccountEntity(
     val accountNumber: String,
     val bankName: String
 ) {
+    fun toDomain(): Account {
+        return Account(id, customerId, accountNumber, bankName)
+    }
+
+    companion object {
+        fun create(accountRequest: AccountServiceRequest): AccountEntity {
+            return AccountEntity(null, accountRequest.customerId, accountRequest.accountNumber, accountRequest.bankName)
+        }
+    }
 }

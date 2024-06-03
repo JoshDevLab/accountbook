@@ -1,6 +1,6 @@
 package com.josh.accountbook.core.api.controller.v1
 
-import com.josh.accountbook.core.api.dto.LoginRequestDto
+import com.josh.accountbook.core.api.dto.LoginRequest
 import com.josh.accountbook.core.api.support.response.ApiResponse
 import com.josh.accountbook.security.core.auth.AuthService
 import org.springframework.web.bind.annotation.PostMapping
@@ -14,7 +14,7 @@ class AuthController(
     val authService: AuthService
 ) {
     @PostMapping("/login")
-    fun login(@RequestBody loginRequest: LoginRequestDto):ApiResponse<String> {
+    fun login(@RequestBody loginRequest: LoginRequest):ApiResponse<String> {
         return ApiResponse.success(authService.login(loginRequest.toServiceDto()))
     }
 }

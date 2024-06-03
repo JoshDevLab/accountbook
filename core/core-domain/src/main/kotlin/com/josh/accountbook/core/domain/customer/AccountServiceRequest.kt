@@ -1,7 +1,6 @@
 package com.josh.accountbook.core.domain.customer
 
-class Account(
-    val id: Long? = null,
+data class AccountServiceRequest(
     val customerId: Long,
     val accountNumber: String,
     val bankName: String,

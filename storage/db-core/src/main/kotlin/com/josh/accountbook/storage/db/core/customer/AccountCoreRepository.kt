@@ -1,6 +1,8 @@
 package com.josh.accountbook.storage.db.core.customer
 
+import com.josh.accountbook.core.domain.customer.Account
 import com.josh.accountbook.core.domain.customer.AccountRepository
+import com.josh.accountbook.core.domain.customer.AccountServiceRequest
 import com.josh.accountbook.storage.db.core.customer.QAccountEntity.accountEntity
 import com.josh.accountbook.storage.db.core.customer.QCustomerEntity.customerEntity
 import com.josh.accountbook.storage.db.core.member.QMemberEntity.memberEntity
@@ -22,6 +24,10 @@ class AccountCoreRepository(
             .fetchFirst()
 
         return fetchFirst != null
+    }
+
+    override fun save(accountRequest: AccountServiceRequest): Account {
+        return accountJpaRepository.save(AccountEntity.create(accountRequest)).toDomain()
     }
 
 }

@@ -2,6 +2,7 @@ package com.josh.accountbook.storage.db.core.customer
 
 import com.josh.accountbook.core.domain.customer.Customer
 import com.josh.accountbook.core.domain.customer.CustomerRepository
+import jakarta.transaction.Transactional
 import org.springframework.stereotype.Repository
 
 @Repository
