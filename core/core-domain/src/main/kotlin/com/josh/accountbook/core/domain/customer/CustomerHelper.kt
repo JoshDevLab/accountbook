@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component
 class CustomerHelper(
     val customerRepository: CustomerRepository
 ) {
-    fun register(customerRequest: CustomerRequestServiceDto): String {
-        TODO()
+    fun register(name: String, memberId: Long): String {
+        return customerRepository.save(name, memberId).name
     }
 }
