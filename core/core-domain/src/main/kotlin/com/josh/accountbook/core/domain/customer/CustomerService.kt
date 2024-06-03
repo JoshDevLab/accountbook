@@ -9,9 +9,6 @@ class CustomerService(
     val accountHelper: AccountHelper
 ) {
     fun register(name: String, memberId: Long): String {
-//        if (accountHelper.existByAccountNumberMemberId(customerRequest.accountNumber, memberId)) {
-//            throw IllegalArgumentException("이미 존재하는 계좌입니다.")
-//        }
         return customerHelper.register(name, memberId)
     }
 }
