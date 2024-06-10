@@ -20,9 +20,10 @@ class AccountBookController(
     @PostMapping
     @PreAuthorize("hasRole('USER')")
     fun addAccountBook(
-        @RequestBody accountBookRequest: AccountBookRequest,
+        @RequestBody accountBookRequest: List<AccountBookRequest>,
         @AuthenticationPrincipal loginUser: CustomUserInfoDto,
         ):ApiResponse<String> {
-        return ApiResponse.success(accountBookService.addAccountBook(accountBookRequest.toServiceDto(), loginUser.id))
+        return ApiResponse.success(accountBookService.addAccountBook(accountBookRequest
+            .stream().map { param -> param.toServiceDto() }.toList(), loginUser.id))
     }
 }
