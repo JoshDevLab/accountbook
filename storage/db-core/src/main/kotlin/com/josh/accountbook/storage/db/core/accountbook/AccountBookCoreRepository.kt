@@ -8,8 +8,9 @@ import org.springframework.stereotype.Repository
 class AccountBookCoreRepository(
     private val accountBookJpaRepository: AccountBookJpaRepository
 ): AccountBookRepository {
-    override fun saveAll(accountBookRequestList: List<AccountBookServiceRequest>, memberId: Long): String {
+    override fun saveAll(accountBookRequestList: List<AccountBookServiceRequest>, memberId: Long): Int {
         val accountBookEntityList = accountBookRequestList.stream().map { param -> AccountBookEntity.create(param) }.toList()
         accountBookJpaRepository.saveAll(accountBookEntityList)
+        return accountBookEntityList.size
     }
 }

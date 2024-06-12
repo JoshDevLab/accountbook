@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component
 class AccountBookWriter(
     private val accountBookRepository: AccountBookRepository
 ) {
-    fun register(accountBookRequestList: List<AccountBookServiceRequest>, memberId: Long): String {
+    fun register(accountBookRequestList: List<AccountBookServiceRequest>, memberId: Long): Int {
         return accountBookRepository.saveAll(accountBookRequestList, memberId)
     }
 }

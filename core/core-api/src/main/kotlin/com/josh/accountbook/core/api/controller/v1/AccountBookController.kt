@@ -22,7 +22,7 @@ class AccountBookController(
     fun addAccountBook(
         @RequestBody accountBookRequest: List<AccountBookRequest>,
         @AuthenticationPrincipal loginUser: CustomUserInfoDto,
-        ):ApiResponse<String> {
+        ):ApiResponse<Int> {
         return ApiResponse.success(accountBookService.addAccountBook(accountBookRequest
             .stream().map { param -> param.toServiceDto() }.toList(), loginUser.id))
     }

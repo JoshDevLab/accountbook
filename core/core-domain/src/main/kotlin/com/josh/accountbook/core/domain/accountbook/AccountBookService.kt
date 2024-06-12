@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service
 class AccountBookService(
     private val accountBookWriter: AccountBookWriter
 ) {
-    fun addAccountBook(accountBookRequestList: List<AccountBookServiceRequest>, memberId: Long): String {
+    fun addAccountBook(accountBookRequestList: List<AccountBookServiceRequest>, memberId: Long): Int {
         return accountBookWriter.register(accountBookRequestList, memberId)
     }
 
