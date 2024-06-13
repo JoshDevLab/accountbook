@@ -13,4 +13,15 @@ class AccountBookCoreRepository(
         accountBookJpaRepository.saveAll(accountBookEntityList)
         return accountBookEntityList.size
     }
+
+    override fun updateAll(accountBookRequestList: List<AccountBookServiceRequest>): Int {
+        accountBookRequestList.stream()
+            .map {
+                param ->
+                    accountBookJpaRepository.update(
+                        param.id!!, param.amount, param.commission, param.paymentAmount, param.paymentDate
+                    )
+            }
+        return accountBookRequestList.size
+    }
 }

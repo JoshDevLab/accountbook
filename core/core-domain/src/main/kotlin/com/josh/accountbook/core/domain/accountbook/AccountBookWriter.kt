@@ -9,4 +9,8 @@ class AccountBookWriter(
     fun register(accountBookRequestList: List<AccountBookServiceRequest>, memberId: Long): Int {
         return accountBookRepository.saveAll(accountBookRequestList, memberId)
     }
+
+    fun modify(accountBookRequestList: List<AccountBookServiceRequest>): Int {
+        return accountBookRepository.updateAll(accountBookRequestList)
+    }
 }

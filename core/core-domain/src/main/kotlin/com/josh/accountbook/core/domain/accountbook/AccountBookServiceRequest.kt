@@ -4,6 +4,7 @@ import java.math.BigDecimal
 import java.time.LocalDate
 
 data class AccountBookServiceRequest(
+    val id: Long? = null,
     val customerId: Long,
     val accountId: Long,
     val amount: BigDecimal,

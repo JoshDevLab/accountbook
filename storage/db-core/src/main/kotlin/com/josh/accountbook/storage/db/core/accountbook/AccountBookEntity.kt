@@ -22,6 +22,7 @@ class AccountBookEntity(
 ) {
     companion object {
         fun create(accountBookServiceRequest: AccountBookServiceRequest): AccountBookEntity {
+
             return AccountBookEntity(
                 null, accountBookServiceRequest.customerId, accountBookServiceRequest.accountId,
                 accountBookServiceRequest.amount, accountBookServiceRequest.commission,

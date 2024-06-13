@@ -10,4 +10,8 @@ class AccountBookService(
         return accountBookWriter.register(accountBookRequestList, memberId)
     }
 
+    fun modifyAccountBook(accountBookRequestList: List<AccountBookServiceRequest>): Int {
+        return accountBookWriter.modify(accountBookRequestList)
+    }
+
 }

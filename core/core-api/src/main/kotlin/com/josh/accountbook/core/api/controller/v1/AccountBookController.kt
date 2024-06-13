@@ -8,6 +8,7 @@ import com.josh.accountbook.security.core.auth.CustomUserInfoDto
 import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.security.core.annotation.AuthenticationPrincipal
 import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
@@ -22,8 +23,20 @@ class AccountBookController(
     fun addAccountBook(
         @RequestBody accountBookRequest: List<AccountBookRequest>,
         @AuthenticationPrincipal loginUser: CustomUserInfoDto,
-        ):ApiResponse<Int> {
-        return ApiResponse.success(accountBookService.addAccountBook(accountBookRequest
-            .stream().map { param -> param.toServiceDto() }.toList(), loginUser.id))
+        ): ApiResponse<Int> {
+        return ApiResponse.success(accountBookService.addAccountBook(
+            accountBookRequest.stream().map { param -> param.toServiceDto() }.toList(), loginUser.id
+        ))
+    }
+
+    @PutMapping("/")
+    @PreAuthorize("hasRole('USER')")
+    fun modifyAccountBook(
+        @RequestBody accountBookRequest: List<AccountBookRequest>,
+        @AuthenticationPrincipal loginUser: CustomUserInfoDto,
+    ): ApiResponse<Int> {
+        return ApiResponse.success(accountBookService.modifyAccountBook(
+            accountBookRequest.stream().map { param -> param.toServiceDto() }.toList()
+        ))
     }
 }
