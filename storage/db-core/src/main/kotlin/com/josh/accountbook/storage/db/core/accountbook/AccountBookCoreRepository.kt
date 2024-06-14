@@ -1,8 +1,10 @@
 package com.josh.accountbook.storage.db.core.accountbook
 
+import com.josh.accountbook.core.domain.accountbook.AccountBook
 import com.josh.accountbook.core.domain.accountbook.AccountBookRepository
 import com.josh.accountbook.core.domain.accountbook.AccountBookServiceRequest
 import org.springframework.stereotype.Repository
+import java.time.LocalDate
 
 @Repository
 class AccountBookCoreRepository(
@@ -23,5 +25,15 @@ class AccountBookCoreRepository(
                     )
             }
         return accountBookRequestList.size
+    }
+
+    override fun searchByPagination(
+        customerName: String,
+        startYm: LocalDate,
+        endYm: LocalDate,
+        offSet: Int,
+        limit: Int
+    ): List<AccountBook> {
+        //TODO
     }
 }
