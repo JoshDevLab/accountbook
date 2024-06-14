@@ -46,7 +46,7 @@ class AccountBookController(
         @RequestParam("offSet") offSet: Int,
         @RequestParam("limit") limit: Int,
         @AuthenticationPrincipal loginUser: CustomUserInfoDto,
-    ): ApiResponse<AccountBook> {
+    ): ApiResponse<List<AccountBook>> {
         return ApiResponse.success(accountBookService.searchAccountBooks(customerName, startYm, endYm, offSet, limit))
     }
 }
