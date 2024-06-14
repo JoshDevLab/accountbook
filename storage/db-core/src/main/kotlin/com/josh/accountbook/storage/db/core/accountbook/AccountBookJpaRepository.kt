@@ -1,5 +1,6 @@
 package com.josh.accountbook.storage.db.core.accountbook
 
+import jakarta.transaction.Transactional
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Modifying
 import org.springframework.data.jpa.repository.Query
@@ -9,8 +10,9 @@ import java.time.LocalDate
 
 interface AccountBookJpaRepository: JpaRepository<AccountBookEntity, Long> {
     @Modifying
-    @Query("update AccountBook ab set ab.amount = :amount and ab.commission = :commission" +
-            " and ab.paymentAmount = : paymentAmount and ab.paymentDate = :paymentDate where ab.id = :id")
+    @Transactional
+    @Query("update AccountBookEntity ab set ab.amount = :amount, ab.commission = :commission" +
+            " , ab.paymentAmount = :paymentAmount , ab.paymentDate = :paymentDate where ab.id = :id")
     fun update(
         @Param(value = "id") id: Long,
         @Param(value = "amount") amount: BigDecimal,
