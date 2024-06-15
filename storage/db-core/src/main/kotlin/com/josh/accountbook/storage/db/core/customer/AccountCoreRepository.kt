@@ -30,4 +30,8 @@ class AccountCoreRepository(
         return accountJpaRepository.save(AccountEntity.create(accountRequest)).toDomain()
     }
 
+    override fun modify(accountId: Long, accountRequest: AccountServiceRequest): String {
+        return accountJpaRepository.update(accountId, accountRequest.accountNumber, accountRequest.bankName)
+    }
+
 }

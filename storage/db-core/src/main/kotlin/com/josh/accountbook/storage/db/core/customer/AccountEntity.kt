@@ -22,7 +22,7 @@ class AccountEntity(
 
     companion object {
         fun create(accountRequest: AccountServiceRequest): AccountEntity {
-            return AccountEntity(null, accountRequest.customerId, accountRequest.accountNumber, accountRequest.bankName)
+            return AccountEntity(null, accountRequest.customerId!!, accountRequest.accountNumber, accountRequest.bankName)
         }
     }
 }

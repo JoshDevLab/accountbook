@@ -24,4 +24,13 @@ class AccountController(
             accountService.register(accountRequest.toServiceDto(customerId), loginUser.id).accountNumber
         )
     }
+
+    @PutMapping("{accountId}")
+    fun modify(
+        @PathVariable accountId: Long,
+        @RequestBody accountRequest: AccountRequest
+    ): ApiResponse<String> {
+        return ApiResponse.success(accountService.modify(accountId, accountRequest.toModifyServiceDto()))
+    }
+
 }
