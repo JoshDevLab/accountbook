@@ -17,4 +17,9 @@ class AccountHelper(
     fun register(accountRequest: AccountServiceRequest): Account {
         return accountRepository.save(accountRequest)
     }
+
+    @Transactional
+    fun modifyAccount(accountId: Long, accountRequest: AccountServiceRequest): String {
+        return accountRepository.modify(accountId, accountRequest)
+    }
 }

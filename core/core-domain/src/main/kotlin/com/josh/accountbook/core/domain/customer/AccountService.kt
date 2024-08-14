@@ -11,5 +11,9 @@ class AccountService(
         return accountHelper.register(accountRequest)
     }
 
+    fun modify(accountId: Long, accountRequest: AccountServiceRequest): String {
+        return accountHelper.modifyAccount(accountId, accountRequest)
+    }
+
 
 }

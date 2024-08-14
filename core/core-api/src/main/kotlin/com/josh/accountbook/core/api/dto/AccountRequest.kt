@@ -9,4 +9,8 @@ data class AccountRequest(
     fun toServiceDto(customerId: Long): AccountServiceRequest {
         return AccountServiceRequest(customerId, accountNumber, bankName)
     }
+
+    fun toModifyServiceDto(): AccountServiceRequest {
+        return AccountServiceRequest(accountNumber = accountNumber, bankName = bankName)
+    }
 }
