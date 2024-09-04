@@ -21,6 +21,6 @@ class CustomerController(
         @RequestParam("name") name: String,
         @AuthenticationPrincipal loginUser: CustomUserInfoDto,
     ): ApiResponse<String> {
-        return ApiResponse.success(customerService.register(name, loginUser.id))
+        return ApiResponse.success(customerService.register(name))
     }
 }
