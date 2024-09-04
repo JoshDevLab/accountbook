@@ -30,7 +30,6 @@ subprojects {
 	apply(plugin = "org.springframework.boot")
 	apply(plugin = "io.spring.dependency-management")
 	apply(plugin = "org.asciidoctor.jvm.convert")
-	apply(plugin = "org.jlleitschuh.gradle.ktlint")
 
 	dependencyManagement {
 		imports {
