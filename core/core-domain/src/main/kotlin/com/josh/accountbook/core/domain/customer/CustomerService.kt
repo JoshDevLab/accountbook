@@ -7,7 +7,7 @@ class CustomerService(
     val customerHelper: CustomerHelper,
     val accountHelper: AccountHelper
 ) {
-    fun register(name: String, memberId: Long): String {
-        return customerHelper.register(name, memberId)
+    fun register(name: String): String {
+        return customerHelper.register(name)
     }
 }

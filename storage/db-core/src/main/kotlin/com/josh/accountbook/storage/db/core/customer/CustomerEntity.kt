@@ -12,15 +12,14 @@ class CustomerEntity(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
     val name: String,
-    val memberId: Long,
 ) {
     fun toDomain(): Customer {
-        return Customer(id!!, name, memberId)
+        return Customer(id!!, name)
     }
 
     companion object {
-        fun create(name: String, memberId: Long): CustomerEntity {
-            return CustomerEntity(null, name, memberId)
+        fun create(name: String): CustomerEntity {
+            return CustomerEntity(null, name)
         }
     }
 }

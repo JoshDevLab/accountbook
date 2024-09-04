@@ -9,8 +9,8 @@ import org.springframework.stereotype.Repository
 class CustomerCoreRepository(
     private val customerJpaRepository: CustomerJpaRepository
 ): CustomerRepository {
-    override fun save(name: String, memberId: Long): Customer {
-        return customerJpaRepository.save(CustomerEntity.create(name, memberId)).toDomain()
+    override fun save(name: String): Customer {
+        return customerJpaRepository.save(CustomerEntity.create(name)).toDomain()
     }
 
 }
