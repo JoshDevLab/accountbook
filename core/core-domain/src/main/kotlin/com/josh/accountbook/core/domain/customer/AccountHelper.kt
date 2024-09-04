@@ -1,7 +1,7 @@
 package com.josh.accountbook.core.domain.customer
 
-import jakarta.transaction.Transactional
 import org.springframework.stereotype.Component
+import org.springframework.transaction.annotation.Transactional
 
 @Component
 class AccountHelper(

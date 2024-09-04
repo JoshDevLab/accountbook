@@ -9,7 +9,7 @@ interface AccountJpaRepository: JpaRepository<AccountEntity, Long> {
 
     @Modifying
     @Query("update AccountEntity a set a.accountNumber = :accountNumber, " +
-            "a.bankName = :bankName where a.id = accountId ")
+            "a.bankName = :bankName where a.id = :accountId ")
     fun update(
         @Param("accountId") accountId: Long,
         @Param("accountNumber") accountNumber: String,

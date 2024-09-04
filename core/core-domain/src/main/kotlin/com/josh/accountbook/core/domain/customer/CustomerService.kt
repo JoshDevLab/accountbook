@@ -1,6 +1,5 @@
 package com.josh.accountbook.core.domain.customer
 
-import jakarta.transaction.Transactional
 import org.springframework.stereotype.Service
 
 @Service
