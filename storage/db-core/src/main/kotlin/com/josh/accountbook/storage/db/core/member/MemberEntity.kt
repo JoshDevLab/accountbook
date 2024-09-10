@@ -12,7 +12,7 @@ class MemberEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
-    val email: String,
+    val username: String,
     val name: String,
     val password: String,
 
@@ -20,12 +20,12 @@ class MemberEntity(
     val roleType: RoleType
 ) {
     fun toDomain(): Member {
-        return Member(id, email, name, password, roleType)
+        return Member(id, username, name, password, roleType)
     }
 
     companion object {
         fun registerNewMember(signUpRequest: SignUpServiceRequest):MemberEntity {
-            return MemberEntity(null, signUpRequest.email, signUpRequest.name, signUpRequest.password, RoleType.USER)
+            return MemberEntity(null, signUpRequest.username, signUpRequest.name, signUpRequest.password, RoleType.USER)
         }
     }
 

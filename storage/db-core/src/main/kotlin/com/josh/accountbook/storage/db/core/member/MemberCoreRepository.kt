@@ -18,8 +18,8 @@ class MemberCoreRepository(
             ?: return null
     }
 
-    override fun findByEmail(email: String): Member? {
-        return memberJpaRepository.findByEmail(email)
+    override fun findByEmail(username: String): Member? {
+        return memberJpaRepository.findByEmail(username)
             ?.let {
                 return it.toDomain()
             }
@@ -28,11 +28,11 @@ class MemberCoreRepository(
 
     override fun save(signUpRequest: SignUpServiceRequest): String {
         val registerNewMember = MemberEntity.registerNewMember(signUpRequest)
-        return memberJpaRepository.save(registerNewMember).name
+        return memberJpaRepository.save(registerNewMember).username
     }
 
-    override fun existsByEmail(email: String): Boolean {
-        return memberJpaRepository.existsByEmail(email)
+    override fun existsByEmail(username: String): Boolean {
+        return memberJpaRepository.existsByEmail(username)
     }
 
 }

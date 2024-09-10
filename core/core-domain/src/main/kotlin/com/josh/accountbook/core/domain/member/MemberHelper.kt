@@ -10,7 +10,7 @@ class MemberHelper(
         return memberRepository.save(signUpRequest)
     }
 
-    fun checkDuplicateEmail(email: String): Boolean {
-        return memberRepository.existsByEmail(email)
+    fun checkDuplicateEmail(username: String): Boolean {
+        return memberRepository.existsByEmail(username)
     }
 }
