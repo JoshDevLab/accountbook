@@ -36,12 +36,11 @@ class AccountBookCoreRepository(
     }
 
     override fun searchBySlice(
-        customerName: String,
+        customerName: String?,
         accountBookId: Long?,
         startYm: LocalDate,
         endYm: LocalDate,
-        offSet: Int,
-        limit: Int
+        limit: Long
     ): List<AccountBookResponse> {
         return queryFactory
             .select(
@@ -60,10 +59,19 @@ class AccountBookCoreRepository(
             .join(customerEntity).on(accountBookEntity.customerId.eq(customerEntity.id))
             .join(accountEntity).on(accountBookEntity.accountId.eq(accountEntity.id))
             .where(
-                ltAccountBookId(accountBookId),
-                customerEntity.name.like("%$customerName%")
+                likeCustomerName(customerName),
+                ltAccountBookId(accountBookId)
             )
+            .orderBy(accountBookEntity.id.desc())
+            .limit(limit)
             .fetch()
+    }
+
+    private fun likeCustomerName(customerName: String?): BooleanExpression? {
+        if (customerName == null) {
+            return null
+        }
+        return customerEntity.name.like("%$customerName%")
     }
 
     private fun ltAccountBookId(accountBookId: Long?): BooleanExpression? {

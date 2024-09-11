@@ -8,13 +8,12 @@ class AccountBookReader(
     private val accountBookRepository: AccountBookRepository
 ) {
     fun searchAccountBook(
-        customerName: String,
+        customerName: String?,
         accountBookId: Long?,
         startYm: LocalDate,
         endYm: LocalDate,
-        offSet: Int,
-        limit: Int
+        limit: Long
     ): List<AccountBookResponse> {
-        return accountBookRepository.searchBySlice(customerName, accountBookId, startYm, endYm, offSet, limit)
+        return accountBookRepository.searchBySlice(customerName, accountBookId, startYm, endYm, limit)
     }
 }

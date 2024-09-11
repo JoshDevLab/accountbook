@@ -38,14 +38,13 @@ class AccountBookController(
     @GetMapping
     @PreAuthorize("hasRole('USER')")
     fun getAccountBooks(
-        @RequestParam("customerName", required = false) customerName: String,
-        @RequestParam("customerName", required = false) accountBookId: Long?,
+        @RequestParam("customerName", required = false) customerName: String?,
+        @RequestParam("accountBookId", required = false) accountBookId: Long?,
         @RequestParam("startYm") startYm: LocalDate,
         @RequestParam("endYm") endYm: LocalDate,
-        @RequestParam("offSet") offSet: Int,
-        @RequestParam("limit") limit: Int,
+        @RequestParam("limit") limit: Long,
         @AuthenticationPrincipal loginUser: CustomUserInfoDto,
     ): ApiResponse<List<com.josh.accountbook.core.domain.accountbook.AccountBookResponse>> {
-        return ApiResponse.success(accountBookService.searchAccountBooks(customerName, accountBookId, startYm, endYm, offSet, limit))
+        return ApiResponse.success(accountBookService.searchAccountBooks(customerName, accountBookId, startYm, endYm, limit))
     }
 }
