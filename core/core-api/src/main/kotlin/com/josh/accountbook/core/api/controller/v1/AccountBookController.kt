@@ -1,9 +1,7 @@
 package com.josh.accountbook.core.api.controller.v1
 
 import com.josh.accountbook.core.api.dto.AccountBookRequest
-import com.josh.accountbook.core.api.dto.AccountBookResponse
 import com.josh.accountbook.core.api.support.response.ApiResponse
-import com.josh.accountbook.core.domain.accountbook.AccountBook
 import com.josh.accountbook.core.domain.accountbook.AccountBookService
 import com.josh.accountbook.security.core.auth.CustomUserInfoDto
 import org.springframework.security.access.prepost.PreAuthorize
@@ -41,12 +39,13 @@ class AccountBookController(
     @PreAuthorize("hasRole('USER')")
     fun getAccountBooks(
         @RequestParam("customerName", required = false) customerName: String,
+        @RequestParam("customerName", required = false) accountBookId: Long?,
         @RequestParam("startYm") startYm: LocalDate,
         @RequestParam("endYm") endYm: LocalDate,
         @RequestParam("offSet") offSet: Int,
         @RequestParam("limit") limit: Int,
         @AuthenticationPrincipal loginUser: CustomUserInfoDto,
-    ): ApiResponse<List<AccountBook>> {
-        return ApiResponse.success(accountBookService.searchAccountBooks(customerName, startYm, endYm, offSet, limit))
+    ): ApiResponse<List<com.josh.accountbook.core.domain.accountbook.AccountBookResponse>> {
+        return ApiResponse.success(accountBookService.searchAccountBooks(customerName, accountBookId, startYm, endYm, offSet, limit))
     }
 }

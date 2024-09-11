@@ -17,9 +17,9 @@ class AccountBookService(
     }
 
     fun searchAccountBooks(
-        customerName: String, startYm: LocalDate, endYm: LocalDate, offSet: Int, limit: Int
-    ): List<AccountBook> {
-        return accountBookReader.searchAccountBook(customerName, startYm, endYm, offSet, limit)
+        customerName: String, accountBookId: Long?, startYm: LocalDate, endYm: LocalDate, offSet: Int, limit: Int
+    ): List<AccountBookResponse> {
+        return accountBookReader.searchAccountBook(customerName, accountBookId, startYm, endYm, offSet, limit)
     }
 
 }

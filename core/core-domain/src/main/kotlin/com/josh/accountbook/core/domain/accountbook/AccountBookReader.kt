@@ -9,11 +9,12 @@ class AccountBookReader(
 ) {
     fun searchAccountBook(
         customerName: String,
+        accountBookId: Long?,
         startYm: LocalDate,
         endYm: LocalDate,
         offSet: Int,
         limit: Int
-    ): List<AccountBook> {
-        return accountBookRepository.searchByPagination(customerName, startYm, endYm, offSet, limit)
+    ): List<AccountBookResponse> {
+        return accountBookRepository.searchBySlice(customerName, accountBookId, startYm, endYm, offSet, limit)
     }
 }
