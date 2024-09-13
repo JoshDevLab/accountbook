@@ -2,6 +2,7 @@ package com.josh.accountbook.core.api.controller.v1
 
 import com.josh.accountbook.core.api.dto.AccountBookRequest
 import com.josh.accountbook.core.api.support.response.ApiResponse
+import com.josh.accountbook.core.domain.accountbook.AccountBookResponse
 import com.josh.accountbook.core.domain.accountbook.AccountBookService
 import com.josh.accountbook.security.core.auth.CustomUserInfoDto
 import org.springframework.security.access.prepost.PreAuthorize
@@ -44,7 +45,7 @@ class AccountBookController(
         @RequestParam("endYm") endYm: LocalDate,
         @RequestParam("limit") limit: Long,
         @AuthenticationPrincipal loginUser: CustomUserInfoDto,
-    ): ApiResponse<List<com.josh.accountbook.core.domain.accountbook.AccountBookResponse>> {
+    ): ApiResponse<List<AccountBookResponse>> {
         return ApiResponse.success(accountBookService.searchAccountBooks(customerName, accountBookId, startYm, endYm, limit))
     }
 }

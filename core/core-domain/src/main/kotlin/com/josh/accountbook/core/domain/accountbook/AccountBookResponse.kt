@@ -12,6 +12,4 @@ data class AccountBookResponse(
     val commission: Double,
     val paymentAmount: BigDecimal,
     val paymentDate: LocalDate
-) {
-
-}
+)
