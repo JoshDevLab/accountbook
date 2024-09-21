@@ -8,6 +8,7 @@ import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.boot.logging.LogLevel
 import org.springframework.http.ResponseEntity
+import org.springframework.security.core.userdetails.UsernameNotFoundException
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.RestControllerAdvice
 
@@ -34,6 +35,12 @@ class ApiControllerAdvice {
     @ExceptionHandler(DuplicateEmailException::class)
     fun duplicateEmailException(e: Exception): ResponseEntity<ApiResponse<Any>> {
         log.error("duplicateEmailException : {}", e.message, e)
+        return ResponseEntity(ApiResponse.error(ErrorType.CLIENT_ERROR, e.message), ErrorType.CLIENT_ERROR.status)
+    }
+
+    @ExceptionHandler(UsernameNotFoundException::class)
+    fun userNotFoundException(e: Exception): ResponseEntity<ApiResponse<Any>> {
+        log.error("userNotFoundException : {}", e.message, e)
         return ResponseEntity(ApiResponse.error(ErrorType.CLIENT_ERROR, e.message), ErrorType.CLIENT_ERROR.status)
     }
 
