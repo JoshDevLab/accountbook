@@ -10,6 +10,9 @@ import org.springframework.security.config.annotation.web.configurers.*
 import org.springframework.security.config.http.SessionCreationPolicy
 import org.springframework.security.web.SecurityFilterChain
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
+import org.springframework.web.cors.CorsConfiguration
+import org.springframework.web.cors.CorsConfigurationSource
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource
 
 
 @Configuration
@@ -34,7 +37,8 @@ class SecurityConfig(
     fun filterChain(http: HttpSecurity): SecurityFilterChain {
         //CSRF, CORS
         http.csrf { csrf: CsrfConfigurer<HttpSecurity> -> csrf.disable() }
-        http.cors(Customizer.withDefaults())
+
+        http.cors { c -> c.configurationSource(corsConfigurationSource()) }
 
         //세션 관리 상태 없음으로 구성, Spring Security가 세션 생성 or 사용 X
         http.sessionManagement { sessionManagement: SessionManagementConfigurer<HttpSecurity?> ->
@@ -69,5 +73,20 @@ class SecurityConfig(
         )
 
         return http.build()
+    }
+
+    @Bean
+    fun corsConfigurationSource(): CorsConfigurationSource {
+        val config = CorsConfiguration()
+
+        config.allowCredentials = true
+        config.allowedOrigins = listOf("http://localhost:5173")
+        config.allowedMethods = listOf("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS")
+        config.allowedHeaders = listOf("*")
+        config.exposedHeaders = listOf("*")
+
+        val source: UrlBasedCorsConfigurationSource = UrlBasedCorsConfigurationSource()
+        source.registerCorsConfiguration("/**", config)
+        return source
     }
 }
