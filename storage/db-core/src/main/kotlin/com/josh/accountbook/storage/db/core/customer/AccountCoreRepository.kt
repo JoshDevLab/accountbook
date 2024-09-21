@@ -18,9 +18,7 @@ class AccountCoreRepository(
         val fetchFirst = queryFactory
             .selectOne()
             .from(accountEntity)
-            .join(customerEntity).on(accountEntity.customerId.eq(customerEntity.id))
-            .join(memberEntity).on(customerEntity.memberId.eq(memberEntity.id))
-            .where(memberEntity.id.eq(memberId), accountEntity.accountNumber.eq(accountNumber))
+            .where(accountEntity.accountNumber.eq(accountNumber))
             .fetchFirst()
 
         return fetchFirst != null
