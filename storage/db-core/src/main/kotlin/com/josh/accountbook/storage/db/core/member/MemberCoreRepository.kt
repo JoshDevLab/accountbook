@@ -19,7 +19,7 @@ class MemberCoreRepository(
     }
 
     override fun findByEmail(username: String): Member? {
-        return memberJpaRepository.findByEmail(username)
+        return memberJpaRepository.findByUsername(username)
             ?.let {
                 return it.toDomain()
             }
@@ -32,7 +32,7 @@ class MemberCoreRepository(
     }
 
     override fun existsByEmail(username: String): Boolean {
-        return memberJpaRepository.existsByEmail(username)
+        return memberJpaRepository.existsByUsername(username)
     }
 
 }
