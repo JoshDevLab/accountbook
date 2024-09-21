@@ -13,7 +13,7 @@ class AuthService(
     private val jwtUtil: JwtUtil
 ) {
     fun login(loginRequest: LoginRequestServiceDto): String {
-        val member = (memberRepository.findByEmail(loginRequest.email)
+        val member = (memberRepository.findByEmail(loginRequest.username)
             ?: throw UsernameNotFoundException("가입된 이메일이 없습니다."))
 
         if (!encoder.matches(loginRequest.password, member.password)) {

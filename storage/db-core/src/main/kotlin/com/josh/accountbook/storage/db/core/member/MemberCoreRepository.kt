@@ -18,7 +18,7 @@ class MemberCoreRepository(
             ?: return null
     }
 
-    override fun findByEmail(username: String): Member? {
+    override fun findByUsername(username: String): Member? {
         return memberJpaRepository.findByUsername(username)
             ?.let {
                 return it.toDomain()
