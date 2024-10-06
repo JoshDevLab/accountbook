@@ -1,15 +1,12 @@
 package com.josh.accountbook.storage.db.core.accountbook
 
 import com.josh.accountbook.core.domain.accountbook.AccountBookServiceRequest
-import com.josh.accountbook.storage.db.core.customer.AccountEntity
-import jakarta.persistence.Entity
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
-import jakarta.persistence.Id
+import jakarta.persistence.*
 import java.math.BigDecimal
 import java.time.LocalDate
 
 @Entity
+@Table(name = "account_book")
 class AccountBookEntity(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,

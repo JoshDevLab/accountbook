@@ -6,7 +6,7 @@ import com.josh.accountbook.core.domain.member.SignUpServiceRequest
 import jakarta.persistence.*
 
 @Entity
-@Table(name = "MEMBER")
+@Table(name = "member")
 class MemberEntity(
 
     @Id
