@@ -15,6 +15,7 @@ class MemberEntity(
     val username: String,
     val name: String,
     val password: String,
+    val nickName: String,
 
     @Enumerated
     val roleType: RoleType
