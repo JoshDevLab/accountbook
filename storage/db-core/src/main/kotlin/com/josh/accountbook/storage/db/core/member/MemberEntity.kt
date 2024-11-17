@@ -26,7 +26,8 @@ class MemberEntity(
 
     companion object {
         fun registerNewMember(signUpRequest: SignUpServiceRequest):MemberEntity {
-            return MemberEntity(null, signUpRequest.username, signUpRequest.name, signUpRequest.password, RoleType.USER)
+            return MemberEntity(null, signUpRequest.username, signUpRequest.name, signUpRequest.password, RoleType.USER,
+                signUpRequest.nickname)
         }
     }
 
